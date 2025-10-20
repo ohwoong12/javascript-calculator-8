@@ -6,6 +6,7 @@ import {
   InvalidSeparator,
   InvalidCustomSeparator,
   InvalidCustomSepartorDesingnator,
+  InvalidOperand,
 } from './Validation.js';
 
 class App {
@@ -52,6 +53,7 @@ class App {
 
   calculate() {
     const afterSplitValue = this.splitInputValue();
+    InvalidOperand(afterSplitValue);
 
     const preCheckValue = afterSplitValue.map((ele) => {
       return Number(ele);

@@ -29,3 +29,9 @@ export function InvalidCustomSeparator(customSeparator) {
   }
 }
 
+export function InvalidOperand(operand) {
+  const checkEmptyOperand = operand.indexOf('', 1);
+  if (checkEmptyOperand !== -1) {
+    throw new Error(ERROR_MESSAGE.INVALID_OPERAND);
+  }
+}
