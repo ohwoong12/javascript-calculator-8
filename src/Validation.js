@@ -17,6 +17,12 @@ export function InvalidSeparator(input) {
   }
 }
 
+export function InvalidCustomSepartorDesingnator(customSepEndIndex) {
+  if (customSepEndIndex === -1) {
+    throw new Error(ERROR_MESSAGE.INVALID_CORRECT_CUSTOMSEPARATOR);
+  }
+}
+
 export function InvalidCustomSeparator(customSeparator) {
   if (Number.isNaN(customSeparator) || customSeparator === '') {
     throw new Error(ERROR_MESSAGE.INVALID_CORRECT_CUSTOMSEPARATOR);
