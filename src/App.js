@@ -4,6 +4,7 @@ import {
   validOnlyNumber,
   validInputValueIsNegative,
   InvalidSeparator,
+  InvalidCustomSeparator,
 } from './Validation.js';
 
 class App {
@@ -36,6 +37,8 @@ class App {
     if (this.input.startsWith('//')) {
       const customSepEndIndex = this.input.indexOf('\\n');
       const customSeparator = this.input.slice(2, customSepEndIndex);
+      InvalidCustomSeparator(customSeparator);
+
       const toBeValue = this.input.slice(customSepEndIndex + 2);
 
       return toBeValue.split(customSeparator);
