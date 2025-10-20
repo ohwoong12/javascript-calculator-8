@@ -1,5 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 import { CACLULATE_MESSAGE } from './Constants.js';
+import validOnlyNumber from './Validation.js';
+
 class App {
   async run() {
     try {
@@ -41,6 +43,7 @@ class App {
     const preCheckValue = afterSplitValue.map((ele) => {
       return Number(ele);
     });
+    validOnlyNumber(preCheckValue);
 
     const result = preCheckValue.reduce((a, b) => a + b, 0);
 
