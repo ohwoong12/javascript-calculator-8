@@ -1,6 +1,10 @@
 import { Console } from '@woowacourse/mission-utils';
 import { CACLULATE_MESSAGE } from './Constants.js';
-import { validOnlyNumber, validInputValueIsNegative } from './Validation.js';
+import {
+  validOnlyNumber,
+  validInputValueIsNegative,
+  InvalidSeparator,
+} from './Validation.js';
 
 class App {
   async run() {
@@ -36,6 +40,7 @@ class App {
 
       return toBeValue.split(customSeparator);
     }
+    InvalidSeparator(this.input);
     return this.input.split(/,|:/);
   }
 
