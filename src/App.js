@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { CACLULATE_MESSAGE } from './Constants.js';
-import validOnlyNumber from './Validation.js';
+import { validOnlyNumber, validInputValueIsNegative } from './Validation.js';
 
 class App {
   async run() {
@@ -27,6 +27,7 @@ class App {
   printResult() {
     Console.print(`${CACLULATE_MESSAGE.END} ${this.calculate()}`);
   }
+
   splitInputValue() {
     if (this.input.startsWith('//')) {
       const customSepEndIndex = this.input.indexOf('\\n');
@@ -40,9 +41,12 @@ class App {
 
   calculate() {
     const afterSplitValue = this.splitInputValue();
+
     const preCheckValue = afterSplitValue.map((ele) => {
       return Number(ele);
     });
+
+    validInputValueIsNegative(preCheckValue);
     validOnlyNumber(preCheckValue);
 
     const result = preCheckValue.reduce((a, b) => a + b, 0);
