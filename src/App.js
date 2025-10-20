@@ -5,6 +5,11 @@ class App {
     try {
       const input = await this.enterInput();
 
+      if (input === '') {
+        this.printResult(0);
+        return;
+      }
+
       const splitValues = this.splitInputValue(input);
       const result = this.calculate(splitValues);
       this.printResult(result);
@@ -15,6 +20,7 @@ class App {
 
   async enterInput() {
     this.input = await Console.readLineAsync(CACLULATE_MESSAGE.START);
+  }
 
   printResult() {
     Console.print(`${CACLULATE_MESSAGE.END} ${this.calculate()}`);
