@@ -7,6 +7,7 @@ class App {
 
       const splitValues = this.splitInputValue(input);
       const result = this.calculate(splitValues);
+      this.printResult(result);
     } catch (error) {
       throw new Error(error);
     }
@@ -15,6 +16,8 @@ class App {
   async enterInput() {
     this.input = await Console.readLineAsync(CACLULATE_MESSAGE.START);
 
+  printResult() {
+    Console.print(`${CACLULATE_MESSAGE.END} ${this.calculate()}`);
   }
   splitInputValue() {
     if (this.input.startsWith('//')) {
