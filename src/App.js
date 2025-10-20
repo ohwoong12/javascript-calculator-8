@@ -6,12 +6,15 @@ class App {
       const input = await this.enterInput();
 
       const splitValues = this.splitInputValue(input);
+      const result = this.calculate(splitValues);
     } catch (error) {
       throw new Error(error);
     }
   }
+
   async enterInput() {
     this.input = await Console.readLineAsync(CACLULATE_MESSAGE.START);
+
   }
   splitInputValue() {
     if (this.input.startsWith('//')) {
@@ -23,6 +26,16 @@ class App {
     }
     return this.input.split(/,|:/);
   }
+
+  calculate() {
+    const afterSplitValue = this.splitInputValue();
+    const preCheckValue = afterSplitValue.map((ele) => {
+      return Number(ele);
+    });
+
+    const result = preCheckValue.reduce((a, b) => a + b, 0);
+
+    return result;
   }
 }
 
